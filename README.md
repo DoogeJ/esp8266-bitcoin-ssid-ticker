@@ -17,3 +17,6 @@ This information is required to be able to get the current Bitcoin exchange rate
 Some code has been borrowed from @nebman 's [btc-ticker-esp8266](https://github.com/nebman/btc-ticker-esp8266).
 
 The idea for this project came from @buzztiaan who referenced @shesek's [bitcoin-ssid-ticker](https://github.com/shesek/bitcoin-ssid-ticker).
+
+## like this?
+Buy me some coffee using Bitcoin at 19rh9CsKvXiyx7QZi357Bx6vzkPEjj6veT or [PayPal](https://www.paypal.me/NoxiousPluK)! Thanks!
