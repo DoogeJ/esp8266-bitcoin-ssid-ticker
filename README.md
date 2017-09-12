@@ -7,8 +7,8 @@ Then it will wait for 30 seconds, and start over.
 # settings
 There are two settings at the top of the source file, namely:
 ```c++
-const char* ssid = "my ssid";          //This is where you put in your home network's SSID to connect to
-const char* password ="my password";   //This is where you put in your home network's password
+const char* ssid =     "my ssid";       //This is where you put in your home network's SSID to connect to
+const char* password = "my password";   //This is where you put in your home network's password
 ```
 
 This information is required to be able to get the current Bitcoin exchange rate.
