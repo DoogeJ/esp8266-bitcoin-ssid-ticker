@@ -6,7 +6,6 @@ const char* ssid =     "my ssid";       //This is where you put in your home net
 const char* password = "my password";   //This is where you put in your home network's password
 
 const String url = "http://api.coindesk.com/v1/bpi/currentprice.json";
-unsigned long next_refresh = 0;
 
 HTTPClient http;
 
@@ -31,33 +30,30 @@ void setup() {
 }
 
 void loop() {
-  if( (long)(millis() - next_refresh) >= 0)
-  {
-    http.begin(url);
-    int code = http.GET();
-    
-    if (code == 200) {
-      String payload = http.getString();
+  http.begin(url);
+  int code = http.GET();
   
-      DynamicJsonBuffer jsonBuffer(1100);
-      JsonObject& root = jsonBuffer.parseObject(payload);
-      JsonObject& bpi = root["bpi"];
-      JsonObject& bpi_EUR = bpi["EUR"];
-      int last = bpi_EUR["rate_float"];  
-      
-      String sSSID = "📈 1 bitcoin = € ";
-      sSSID += last;
-      sSSID += ",-";
-      
-      WiFi.softAP(sSSID.c_str());
-    } else {
-      Serial.print("Failed to request coindesk API - is the internet connection active? Return code: ");
-      Serial.println(code);
-      
-      WiFi.softAP("😥 Help me I'm broken!");
-    }
+  if (code == 200) {
+    String payload = http.getString();
+
+    DynamicJsonBuffer jsonBuffer(1100);
+    JsonObject& root = jsonBuffer.parseObject(payload);
+    JsonObject& bpi = root["bpi"];
+    JsonObject& bpi_EUR = bpi["EUR"];
+    int last = bpi_EUR["rate_float"];  
     
-    http.end();
-    next_refresh = millis() + 30000;
+    String sSSID = "📈 1 bitcoin = € ";
+    sSSID += last;
+    sSSID += ",-";
+    
+    WiFi.softAP(sSSID.c_str());
+  } else {
+    Serial.print("Failed to request coindesk API - is the internet connection active? Return code: ");
+    Serial.println(code);
+    
+    WiFi.softAP("😥 Help me I'm broken!");
   }
+  
+  http.end();
+  delay(30000);
 }
