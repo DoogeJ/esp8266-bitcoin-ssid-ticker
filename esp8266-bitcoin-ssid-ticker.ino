@@ -29,7 +29,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 }
 
-void loop() {
+void loop() {z
   http.begin(url);
   int code = http.GET();
   
@@ -55,5 +55,5 @@ void loop() {
   }
   
   http.end();
-  delay(30000);
+  delay(60000); //Coindesk's API updates once a minute
 }
