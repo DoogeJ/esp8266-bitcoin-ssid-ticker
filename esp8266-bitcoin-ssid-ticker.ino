@@ -29,7 +29,11 @@ void setup() {
   Serial.println(WiFi.localIP());
 }
 
-void loop() {z
+void loop() {
+  //Some boards have issues using wifi while softAP is up, so we shut it down to fetch a fresh price
+  WiFi.softAPdisconnect(false);
+  WiFi.enableAP(false);
+
   http.begin(url);
   int code = http.GET();
   
