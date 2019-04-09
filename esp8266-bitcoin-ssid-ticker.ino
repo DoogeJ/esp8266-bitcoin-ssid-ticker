@@ -36,10 +36,10 @@ void loop() {
   if (code == 200) {
     String payload = http.getString();
 
-    DynamicJsonBuffer jsonBuffer(1100);
-    JsonObject& root = jsonBuffer.parseObject(payload);
-    JsonObject& bpi = root["bpi"];
-    JsonObject& bpi_EUR = bpi["EUR"];
+    DynamicJsonDocument jsonBuffer(1100);
+    deserializeJson(jsonBuffer, payload);
+    JsonObject bpi = jsonBuffer["bpi"];
+    JsonObject bpi_EUR = bpi["EUR"];
     int last = bpi_EUR["rate_float"];  
     
     String sSSID = "📈 1 bitcoin = € ";
