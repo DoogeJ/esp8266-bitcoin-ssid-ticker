@@ -1,8 +1,8 @@
 # esp8266-bitcoin-ssid-ticker
 A Bitcoin SSID ticker for ESP8266's written in Arduino C/C++
 
-Using this software, your ESP8266 will connect to your wifi-network, get the current Bitcoin price (in euro, but can easily be changed to pounds or dollars) and then start an access point named '📈 1 bitcoin = € 1,-' where 1 is the current going rate.
-Then it will wait for 30 seconds, and start over.
+Using this software, your ESP8266 will connect to your wifi-network, get the current Bitcoin price (in euro, but can easily be changed to pounds or dollars) and then start an access point named '📈 1 bitcoin = € 1000,-' where 1000 is the current going rate.
+Then it will wait for a minute, and start over.
 
 ![SSID screenshot on a phone][image]
 
